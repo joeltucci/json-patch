@@ -38,6 +38,7 @@ import static com.fasterxml.jackson.annotation.JsonTypeInfo.*;
     @Type(name = "move", value = MoveOperation.class),
     @Type(name = "remove", value = RemoveOperation.class),
     @Type(name = "replace", value = ReplaceOperation.class),
+    @Type(name=BatchRemoveOperation.OPERATION_NAME, value=BatchRemoveOperation.class),
     @Type(name = "test", value = TestOperation.class)
 })
 

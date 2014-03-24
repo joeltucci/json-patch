@@ -90,6 +90,7 @@ public final class JsonDiff
 
         // factorize diffs to optimize patch operations
         DiffFactorizer.factorizeDiffs(diffs);
+        RemoveCoalescer.coalesceRemoves(diffs);
 
         // generate patch operations from node diffs
         final ArrayNode patch = FACTORY.arrayNode();

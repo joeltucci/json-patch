@@ -34,6 +34,7 @@ enum DiffOperation
     REPLACE("replace"),
     MOVE("move"),
     COPY("copy"),
+    BATCH_REMOVE("batch_remove")
     ;
 
     private final String opName;

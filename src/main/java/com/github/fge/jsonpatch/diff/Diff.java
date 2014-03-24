@@ -19,10 +19,14 @@
 package com.github.fge.jsonpatch.diff;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.github.fge.jackson.JacksonUtils;
 import com.github.fge.jackson.JsonNumEquals;
 import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.google.common.base.Objects;
+
+import java.util.Collection;
 
 /**
  * Difference representation. Captures diff information required to
@@ -74,6 +78,15 @@ final class Diff
     {
         return new Diff(DiffOperation.REMOVE, basePath, array1.getIndex(),
             array2.getIndex(), array1.getElement().deepCopy());
+    }
+
+    static Diff batchRemove(final JsonPointer basePath, final Collection<Integer> victimIndices) {
+        ArrayNode victimNodes=new ArrayNode(JacksonUtils.nodeFactory());
+        for(final Integer victimIndex : victimIndices) {
+            victimNodes.add(victimIndex);
+        }
+        return new Diff(DiffOperation.BATCH_REMOVE, basePath,-1,-1,victimNodes);
+
     }
 
     static Diff arrayAdd(final JsonPointer basePath, final JsonNode node)

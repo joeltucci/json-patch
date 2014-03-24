@@ -18,6 +18,8 @@
 
 package com.github.fge.jsonpatch;
 
+import org.testng.annotations.Test;
+
 import java.io.IOException;
 
 public final class ReplaceOperationTest
@@ -28,4 +30,5 @@ public final class ReplaceOperationTest
     {
         super("replace");
     }
+
 }

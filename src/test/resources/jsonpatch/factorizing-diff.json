@@ -63,8 +63,14 @@
         "first": [ 1, 2, 3 ],
         "second": [ 1 ],
         "patch": [
-            { "op": "remove", "path": "/1" },
-            { "op": "remove", "path": "/1" }
+            { "op": "batch_remove", "path": "/-", "value":[1,2] }
+        ]
+    },
+    {
+        "first": {"x":{"a":7, "y":[ 1, 2, 3,4 ]}},
+        "second": {"x":{"a":7, "y":[ 1, 4 ]}},
+        "patch": [
+            { "op": "batch_remove", "path": "/x/y/-", "value":[1,2] }
         ]
     },
     {
@@ -133,9 +139,7 @@
         "first": [0, 1, 2, 3, 4, 5, 6, 7],
         "second": [3, 6, 4, 5, 7],
         "patch": [
-            { "op": "remove", "path": "/0" },
-            { "op": "remove", "path": "/0" },
-            { "op": "remove", "path": "/0" },
+            { "op": "batch_remove", "path": "/-", "value":[0,1,2] },
             { "op": "move", "from": "/3", "path": "/1" }
         ]
     },
